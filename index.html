@@ -88,6 +88,14 @@
     }
     .cu-n { color: #FFD700; font-size: 16px; font-weight: 700; }
     .cu-l { font-size: 10px; color: rgba(255,255,255,0.82); text-transform: uppercase; letter-spacing: 0.05em; }
+    .simple-cd {
+      font-family: 'Ubuntu', sans-serif;
+      font-size: 11px; font-weight: 700;
+      color: #B22234; text-align: center;
+      margin: 16px 0 24px; letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+    .simple-cd-time { font-size: 15px; }
     .ended-bar {
       background: #EFEFEF; color: #777;
       text-align: center; padding: 9px 16px;
@@ -198,7 +206,7 @@
     .cb-icon {
       width: 100%; aspect-ratio: 1; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      transition: all 0.3s ease;
+      transition: all 0.3s ease; overflow: hidden;
     }
     .cb-icon.on {
       background: rgba(178,34,52,0.08);
@@ -208,6 +216,9 @@
     .cb-icon.off {
       background: rgba(0,40,104,0.04);
       border: 2px dashed rgba(0,40,104,0.18);
+    }
+    .cb-icon img {
+      width: 88% !important; height: 88% !important; object-fit: contain; border-radius: 50%;
     }
     .cb-name {
       font-size: 9px; font-weight: 700;
@@ -298,13 +309,13 @@
     .handle-center { text-align: center; }
     .handle-badge {
       display: inline-flex; align-items: center; gap: 8px;
-      background: rgba(178,34,52,0.08);
-      border: 1px solid rgba(178,34,52,0.25);
+      background: rgba(0,40,104,0.06);
+      border: 1px solid rgba(0,40,104,0.2);
       border-radius: 50px; padding: 7px 16px;
       cursor: pointer; transition: background 0.2s;
     }
-    .handle-badge:hover { background: rgba(178,34,52,0.15); }
-    .handle-badge-name { font-size: 15px; font-weight: 700; color: #B22234; }
+    .handle-badge:hover { background: rgba(0,40,104,0.1); }
+    .handle-badge-name { font-size: 15px; font-weight: 700; color: #002868; }
     .handle-badge-edit { font-size: 11px; color: rgba(26,39,68,0.45); text-decoration: underline; }
 
     /* ── COUNT PILL ── */
@@ -504,19 +515,6 @@
 
   <p class="sub spacer-sm">Keep scanning Smartify screens to find all 5 and <strong>win $250!</strong></p>
 
-  <!-- ── COUNTDOWN BAR ── -->
-<div class="cd-bar" id="cd-bar">
-  <span class="label">RAFFLE CLOSES IN</span>
-  <span class="cd-units">
-    <span class="cu"><span class="cu-n" id="cd-d">--</span><span class="cu-l">d</span></span>
-    <span style="opacity:0.4">·</span>
-    <span class="cu"><span class="cu-n" id="cd-h">--</span><span class="cu-l">h</span></span>
-    <span style="opacity:0.4">·</span>
-    <span class="cu"><span class="cu-n" id="cd-m">--</span><span class="cu-l">m</span></span>
-    <span style="opacity:0.4">·</span>
-    <span class="cu"><span class="cu-n" id="cd-s">--</span><span class="cu-l">s</span></span>
-  </span>
-</div>
 
 </div><!-- /screen-found -->
 
@@ -543,6 +541,8 @@
 
   <!-- Handle / status area -->
   <div id="home-status"></div>
+
+  <div class="simple-cd" id="simple-cd">Raffle Closes in <span><span id="cd-d">--</span>D : <span id="cd-h">--</span>H : <span id="cd-m">--</span>M : <span id="cd-s">--</span>S</span></div>
 
   <div class="stripe-bar">
     <span></span><span></span><span></span><span></span><span></span>
@@ -586,7 +586,7 @@
 
   <div style="text-align:center; margin-bottom:16px">
     <span class="eyebrow dim">ALREADY IN YOUR COLLECTION</span>
-    <h2 class="h2-found">YOU ALREADY<br>HAVE THE <span id="dup-sym-name">FIREWORK</span></h2>
+    <h2 class="h2-found">YOU ALREADY HAVE<br>THE <span id="dup-sym-name" class="sym-name-grad">FIREWORK</span></h2>
     <p class="sub">Nice try! Keep scanning to find the ones you're still missing.</p>
   </div>
 
@@ -736,7 +736,7 @@ function getSymSvg(symbol, on, sz) {
   sz = sz || 90;
   var src = ICON_B64[symbol] || '';
   var filter = on ? 'drop-shadow(0 2px 8px rgba(0,0,0,0.15))' : 'grayscale(1) opacity(0.22)';
-  return '<img src="'+src+'" style="width:'+sz+'px;height:'+sz+'px;object-fit:contain;filter:'+filter+'" alt="'+symbol+'">';
+  return '<img src="'+src+'" style="width:'+sz+'px;height:'+sz+'px;object-fit:contain;border-radius:50%;filter:'+filter+'" alt="'+symbol+'">';
 }
 
 // ══════════════════════════════════════════════════════════
@@ -774,10 +774,11 @@ function tick() {
   var h = Math.floor((diff%86400000)/3600000);
   var m = Math.floor((diff%3600000)/60000);
   var s = Math.floor((diff%60000)/1000);
-  $$('cd-d').textContent = d;
-  $$('cd-h').textContent = pad(h);
-  $$('cd-m').textContent = pad(m);
-  $$('cd-s').textContent = pad(s);
+  var els = { d:$$('cd-d'), h:$$('cd-h'), m:$$('cd-m'), s:$$('cd-s') };
+  if(els.d) els.d.textContent = d;
+  if(els.h) els.h.textContent = pad(h);
+  if(els.m) els.m.textContent = pad(m);
+  if(els.s) els.s.textContent = pad(s);
 }
 setInterval(tick, 1000);
 tick();
@@ -850,13 +851,19 @@ function showHome() {
       '<p style="font-size:12px;color:rgba(26,39,68,0.45);margin-top:6px">Drawing on July 6, 2026</p>'+
       '</div>';
   } else if (state.handle) {
+    var n = state.symbols.length;
+    var pct = Math.round((n/5)*100)+'%';
     ha.innerHTML =
       '<div class="handle-center" style="margin:12px 0">'+
       '<div class="handle-badge" onclick="editHandle()">'+
       '<span class="handle-badge-name">@'+state.handle+'</span>'+
-      '<span class="handle-badge-edit">edit</span></div>'+
-      '<p style="font-size:13px;color:rgba(26,39,68,0.5);margin-top:8px;text-align:center">'+
-      state.symbols.length+' of 5 collected</p></div>';
+      '<span class="handle-badge-edit">edit</span></div></div>'+
+      '<div class="pill-center" style="margin-top:12px">'+
+      '<div class="count-pill"><span>'+n+' of 5 collected</span></div></div>'+
+      '<div class="prog-wrap">'+
+      '<div class="prog-meta"><span>Progress</span><strong style="color:#B22234">'+pct+'</strong></div>'+
+      '<div class="prog-track"><div class="prog-fill" style="width:'+pct+'"></div></div>'+
+      '</div>';
   } else {
     ha.innerHTML = '';
   }
@@ -889,7 +896,7 @@ function showFound() {
 function showDuplicate() {
   var sym = SCAN_SYMBOL;
   $$('dup-icon').innerHTML = getSymSvg(sym, true, 100);
-  $$('dup-sym-name').textContent = NAMES[sym] || sym;
+  $$('dup-sym-name').textContent = (NAMES[sym] || sym).toUpperCase();
   $$('dup-handle').textContent   = '@'+state.handle;
   renderBoard('dup-board');
   goTo('screen-dup');
