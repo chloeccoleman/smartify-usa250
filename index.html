@@ -575,6 +575,109 @@
 
   <p class="fine">Winner announced via Instagram on July 10, 2026.</p>
   <p class="fine" style="margin-top:4px">No purchase necessary. One entry per person.</p>
+  <p class="fine" style="margin-top:12px"><a href="#" onclick="goTo('screen-amoe');return false;" style="color:#002868;font-weight:700;text-decoration:underline;">Enter without scanning →</a></p>
+  <p class="fine" style="margin-top:6px"><a href="#" onclick="goTo('screen-rules');return false;" style="color:rgba(26,39,68,0.5);text-decoration:underline;">Official Rules</a></p>
+</div>
+
+
+<!-- ═══════════════════════════════════════════
+     SCREEN — AMOE (Alternative Method of Entry)
+═══════════════════════════════════════════ -->
+<div class="screen" id="screen-amoe" style="display:none">
+  <div class="stripe-bar">
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span><span></span><span></span>
+    <span></span><span></span><span></span>
+  </div>
+
+  <div style="margin:28px 0 20px;text-align:center">
+    <span class="eyebrow">No QR Code Needed</span>
+    <h2 class="h2-found" style="font-size:34px">ENTER ONLINE</h2>
+    <p class="sub" style="margin-top:8px">Enter the America 250 Raffle directly — no scanning required. One entry per person.</p>
+  </div>
+
+  <div class="form-card">
+    <p class="form-label">Your Name</p>
+    <input class="handle-input" id="amoe-name" type="text" placeholder="First and last name" autocomplete="name"/>
+    <p class="form-label" style="margin-top:14px">Email Address</p>
+    <input class="handle-input" id="amoe-email" type="email" placeholder="you@email.com" autocomplete="email"/>
+    <p class="form-label" style="margin-top:14px">Instagram Handle <span style="color:rgba(26,39,68,0.4);font-weight:400">(optional)</span></p>
+    <div class="handle-wrap"><span class="at-sign">@</span><input class="handle-input" id="amoe-handle" type="text" placeholder="yourhandle" autocomplete="off" style="padding-left:28px"/></div>
+    <button class="cta-btn" onclick="submitAMOE()" style="margin-top:20px;width:100%">Submit Entry →</button>
+    <p class="fine" style="margin-top:10px;text-align:center">By entering you agree to the <a href="#" onclick="goTo('screen-rules');return false;" style="color:#002868">Official Rules</a>. This promotion is not sponsored by Instagram.</p>
+  </div>
+
+  <p style="text-align:center;margin-top:20px"><a href="#" onclick="goTo('screen-home');return false;" style="font-size:13px;color:rgba(26,39,68,0.45);text-decoration:underline;">← Back</a></p>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN — AMOE SUCCESS
+═══════════════════════════════════════════ -->
+<div class="screen" id="screen-amoe-success" style="display:none">
+  <div style="text-align:center;padding:60px 24px">
+    <div style="font-size:64px;margin-bottom:16px">🎆</div>
+    <span class="eyebrow">You're Entered!</span>
+    <h2 class="h2-found" style="font-size:34px;margin:12px 0">ENTRY RECEIVED</h2>
+    <p class="sub">You're entered in the America 250 raffle. Winner announced July 10 via Instagram.</p>
+    <div class="count-pill" style="margin:24px auto;display:inline-flex">Good luck! 🇺🇸</div>
+    <p class="fine" style="margin-top:20px">No purchase necessary. Ends July 6, 2026 at 11:59 PM EST.<br>One entry per person. <a href="#" onclick="goTo('screen-rules');return false;" style="color:#002868">Official Rules</a></p>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     SCREEN — OFFICIAL RULES
+═══════════════════════════════════════════ -->
+<div class="screen" id="screen-rules" style="display:none">
+  <div style="padding:24px 20px 60px">
+    <p style="text-align:center;margin-bottom:16px"><a href="#" onclick="goTo('screen-home');return false;" style="font-size:13px;color:rgba(26,39,68,0.45);text-decoration:underline;">← Back</a></p>
+    <h2 style="font-family:'Ubuntu',sans-serif;font-size:22px;font-weight:700;color:#002868;margin-bottom:16px;text-align:center;">OFFICIAL RULES<br><span style="font-size:15px;color:rgba(26,39,68,0.6);">America 250 Raffle Sweepstakes</span></h2>
+
+    <div style="font-family:'Ubuntu',sans-serif;font-size:13px;color:#1A2744;line-height:1.7;">
+
+    <p style="font-weight:700;margin:12px 0 4px;">1. SPONSOR</p>
+    <p>Smartify Media, LLC, a Delaware limited liability company with its principal place of business at 2916 N. Miami Avenue, Suite 1015, Miami, FL 33127 ("Sponsor"). By participating, entrants agree to be bound by these Official Rules.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">2. PROMOTION PERIOD</p>
+    <p>The America 250 Raffle Sweepstakes ("Sweepstakes") begins June 27, 2026 at 12:00 AM EST and ends July 6, 2026 at 11:59 PM EST ("Promotion Period"). Sponsor's computer is the official timekeeping device.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">3. ELIGIBILITY</p>
+    <p>Open to legal residents of the 50 United States and D.C. who are 18 years of age or older at time of entry. Employees, officers, and directors of Sponsor, and members of their immediate families or households, are ineligible. Void where prohibited.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">4. HOW TO ENTER</p>
+    <p>This Sweepstakes runs nationwide in all U.S. markets where Smartify Media digital screens are deployed. Entrants may use either method below; both receive equal consideration in the drawing.</p>
+    <p><strong>Method 1 — QR Code (Scan-to-Enter):</strong> During the Promotion Period, locate a participating Smartify digital display screen. Scan the QR code for any of the five symbols (Firework, Eagle, Liberty Bell, Hot Dog, American Flag) at <a href="https://usa250.smartifymedia.com" style="color:#002868">usa250.smartifymedia.com</a>. Enter your Instagram handle when prompted. Collect all 5 symbols and submit your entry. Limit: one (1) QR entry per person per symbol (five scans maximum to collect all 5).</p>
+    <p style="margin-top:8px"><strong>Method 2 — Alternative Method of Entry (AMOE — No Purchase Necessary):</strong> Visit <a href="https://usa250.smartifymedia.com" style="color:#002868">usa250.smartifymedia.com</a> and tap "Enter Without Scanning." Complete and submit the online entry form with your name and email address. One (1) AMOE entry per person. AMOE entries are on substantially equal terms as QR scan entries.</p>
+    <p style="margin-top:8px">Limit: one (1) total raffle entry per person, regardless of entry method. Duplicate entries will be disqualified.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">5. PRIZE</p>
+    <p>One (1) Grand Prize: $250 USD (approximate retail value: $250). Prize awarded as a check or electronic payment. No cash equivalent or substitution except at Sponsor's sole discretion. Prize is non-transferable. Winner is solely responsible for all applicable taxes.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">6. DRAWING &amp; ODDS</p>
+    <p>On or about July 10, 2026, Sponsor will conduct a random drawing from all eligible entries received during the Promotion Period. Odds of winning depend on the number of eligible entries received.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">7. WINNER NOTIFICATION</p>
+    <p>The potential winner will be notified via Instagram direct message and/or email within five (5) days of the drawing. Winner must respond within 48 hours or an alternate winner may be selected. Winner may be required to complete an affidavit of eligibility and liability/publicity release. If the potential winner cannot be verified, fails to respond within 48 hours, fails to return required documents, or is found ineligible, Sponsor reserves the right to disqualify that entrant and select an alternate winner from the remaining eligible entries, time permitting.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">8. TAX</p>
+    <p>Prize value is $250, which is below the IRS Form 1099-MISC reporting threshold. Winner is solely responsible for any applicable federal, state, or local taxes.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">8a. PUBLICITY</p>
+    <p>Except where prohibited by law, by accepting the prize, winner grants Sponsor and its agents an irrevocable right and consent to use, publish, and broadcast winner's name, likeness, image, voice, statements, and biographical information in connection with this Sweepstakes for advertising, trade, and promotional purposes, in any medium now known or later developed, worldwide, without further notice, review, or compensation. This consent is provided in satisfaction of Fla. Stat. Section 540.08 and any other applicable right-of-publicity law.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">9. GENERAL CONDITIONS</p>
+    <p>Sponsor reserves the right to cancel, suspend, or modify the Sweepstakes if fraud, technical failures, or any other factor impairs the integrity of the Sweepstakes. All decisions by Sponsor are final. By participating, entrants release Sponsor from any and all liability. This Sweepstakes is governed by the laws of the State of Florida.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">10. PRIVACY &amp; DATA</p>
+    <p>Personal information collected through this Sweepstakes will be used solely to administer the promotion and notify the winner. Data will not be sold to third parties. Participants may request deletion of their data by contacting <a href="mailto:info@smartifymedia.com" style="color:#002868">info@smartifymedia.com</a>.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">11. INSTAGRAM DISCLAIMER</p>
+    <p>This promotion is in no way sponsored, endorsed, administered by, or associated with Instagram. All questions and comments regarding the Sweepstakes should be directed to Sponsor, not Instagram.</p>
+
+    <p style="font-weight:700;margin:12px 0 4px;">12. SPONSOR CONTACT</p>
+    <p>Smartify Media, LLC<br>2916 N. Miami Avenue, Suite 1015<br>Miami, FL 33127<br>info@smartifymedia.com | www.smartifymedia.com</p>
+
+    </div>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════
@@ -1139,6 +1242,43 @@ function resetDemo() {
     processSymbol();   // Known user — claim or show duplicate
   }
 })();
+
+function submitAMOE() {
+  var name  = ($$('amoe-name').value  || '').trim();
+  var email = ($$('amoe-email').value || '').trim();
+  var handle= ($$('amoe-handle').value|| '').trim().replace(/^@/,'');
+  if (!name || name.length < 2) {
+    showToast('Please enter your full name.'); $$('amoe-name').focus(); return;
+  }
+  if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
+    showToast('Please enter a valid email address.'); $$('amoe-email').focus(); return;
+  }
+  if (new Date() > END_DATE) { showToast('This sweepstakes has ended.'); return; }
+
+  // Submit to HubSpot
+  if (HS_PORTAL && HS_FORM) {
+    fetch('https://api.hsforms.com/submissions/v3/integration/submit/'+HS_PORTAL+'/'+HS_FORM, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        fields: [
+          { name: 'firstname',       value: name.split(' ')[0] },
+          { name: 'lastname',        value: name.split(' ').slice(1).join(' ') || '' },
+          { name: 'email',           value: email },
+          { name: 'instagram',       value: handle },
+          { name: 'campaign',        value: 'america250_4th_july_2026' },
+          { name: 'raffle_entry',    value: 'YES' },
+          { name: 'entry_method',    value: 'AMOE' },
+          { name: 'total_symbols',   value: '0' },
+          { name: 'symbols_collected', value: 'AMOE_entry' }
+        ],
+        context: { pageUri: window.location.href, pageName: 'America 250 AMOE' }
+      })
+    }).catch(function(){});
+  }
+  goTo('screen-amoe-success');
+}
+
 </script>
 </body>
 </html>
