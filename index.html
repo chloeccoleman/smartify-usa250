@@ -593,21 +593,24 @@
   <div style="margin:28px 0 20px;text-align:center">
     <span class="eyebrow">No QR Code Needed</span>
     <h2 class="h2-found" style="font-size:34px">ENTER ONLINE</h2>
-    <p class="sub" style="margin-top:8px">Enter the America 250 Raffle directly — no scanning required. One entry per person.</p>
+    <p class="sub" style="margin-top:8px">Enter the America 250 Sweepstakes directly — no scanning required. One entry per person.</p>
   </div>
 
-  <div class="form-card">
-    <p class="form-label">Your Name</p>
-    <input class="handle-input" id="amoe-name" type="text" placeholder="First and last name" autocomplete="name"/>
-    <p class="form-label" style="margin-top:14px">Email Address</p>
-    <input class="handle-input" id="amoe-email" type="email" placeholder="you@email.com" autocomplete="email"/>
-    <p class="form-label" style="margin-top:14px">Instagram Handle <span style="color:rgba(26,39,68,0.4);font-weight:400">(optional)</span></p>
-    <div class="handle-wrap"><span class="at-sign">@</span><input class="handle-input" id="amoe-handle" type="text" placeholder="yourhandle" autocomplete="off" style="padding-left:28px"/></div>
-    <button class="cta-btn" onclick="submitAMOE()" style="margin-top:20px;width:100%">Submit Entry →</button>
-    <p class="fine" style="margin-top:10px;text-align:center">By entering you agree to the <a href="#" onclick="goTo('screen-rules');return false;" style="color:#002868">Official Rules</a>. This promotion is not sponsored by Instagram.</p>
+  <div class="form-section">
+    <label class="form-label" for="amoe-handle">Your Instagram Handle</label>
+    <div class="input-wrap">
+      <span class="at-sign">@</span>
+      <input type="text" id="amoe-handle" placeholder="yourhandle"
+        autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"
+        inputmode="url" />
+    </div>
+    <div class="spacer-sm"></div>
+    <button class="btn btn-primary" onclick="submitAMOE()">Submit Entry →</button>
+    <p class="fine" style="margin-top:10px">By entering you agree to the <a href="#" onclick="goTo('screen-rules');return false;" style="color:#002868">Official Rules</a>. This promotion is not sponsored by Instagram.</p>
   </div>
 
-  <p style="text-align:center;margin-top:20px"><a href="#" onclick="goTo('screen-home');return false;" style="font-size:13px;color:rgba(26,39,68,0.45);text-decoration:underline;">← Back</a></p>
+  <p class="fine">No purchase necessary. One entry per person. Ends July 6, 2026 at 11:59 PM EST.</p>
+  <p style="text-align:center;margin-top:14px"><a href="#" onclick="goTo('screen-home');return false;" style="font-size:13px;color:rgba(26,39,68,0.45);text-decoration:underline;">← Back</a></p>
 </div>
 
 <!-- ═══════════════════════════════════════════
@@ -1244,14 +1247,9 @@ function resetDemo() {
 })();
 
 function submitAMOE() {
-  var name  = ($$('amoe-name').value  || '').trim();
-  var email = ($$('amoe-email').value || '').trim();
-  var handle= ($$('amoe-handle').value|| '').trim().replace(/^@/,'');
-  if (!name || name.length < 2) {
-    showToast('Please enter your full name.'); $$('amoe-name').focus(); return;
-  }
-  if (!email || !/^[^@]+@[^@]+\.[^@]+$/.test(email)) {
-    showToast('Please enter a valid email address.'); $$('amoe-email').focus(); return;
+  var handle = ($$('amoe-handle').value || '').trim().replace(/^@/,'');
+  if (!handle || handle.length < 2) {
+    showToast('Please enter your Instagram handle.'); $$('amoe-handle').focus(); return;
   }
   if (new Date() > END_DATE) { showToast('This sweepstakes has ended.'); return; }
 
@@ -1262,9 +1260,6 @@ function submitAMOE() {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         fields: [
-          { name: 'firstname',       value: name.split(' ')[0] },
-          { name: 'lastname',        value: name.split(' ').slice(1).join(' ') || '' },
-          { name: 'email',           value: email },
           { name: 'instagram',       value: handle },
           { name: 'campaign',        value: 'america250_4th_july_2026' },
           { name: 'raffle_entry',    value: 'YES' },
